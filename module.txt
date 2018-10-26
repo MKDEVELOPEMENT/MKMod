@@ -1,0 +1,9 @@
+{
+    "id" : "MKMod",
+    "version" : "0.1.0-SNAPSHOT",
+    "author" : "",
+    "displayName" : "MKMod",
+    "description" : "This is my new test Module for GCI. Created by MK",
+    "dependencies" : [],
+    "serverSideOnly" : false
+}
