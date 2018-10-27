@@ -24,11 +24,11 @@ import org.terasology.world.generation.facets.SurfaceHeightFacet;
  * limitations under the License.
  */
 public class MKWorldRasterizer implements WorldRasterizer {
-    private Block snow;
+    private Block dirt;
 
     @Override
     public void initialize() {
-        snow = CoreRegistry.get(BlockManager.class).getBlock("Core:Snow");
+        dirt = CoreRegistry.get(BlockManager.class).getBlock("Core:Dirt");
     }
 
     @Override
@@ -37,7 +37,7 @@ public class MKWorldRasterizer implements WorldRasterizer {
         for (Vector3i position : chunkRegion.getRegion()) {
             float surfaceHeight = surfaceHeightFacet.getWorld(position.x, position.z);
             if (position.y < surfaceHeight) {
-                chunk.setBlock(ChunkMath.calcBlockPos(position), snow);
+                chunk.setBlock(ChunkMath.calcBlockPos(position), dirt);
             }
         }
     }
