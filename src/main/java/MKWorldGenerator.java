@@ -31,11 +31,15 @@ public class MKWorldGenerator extends BaseFacetedWorldGenerator {
         super(uri);
     }
 
-    @java.lang.Override
+    @Override
     protected WorldBuilder createWorld() {
         return new WorldBuilder(worldGeneratorPluginLibrary)
                 .addProvider(new SurfaceProvider())
                 .addProvider(new SeaLevelProvider(0))
-                .addRasterizer(new MKWorldRasterizer());
+                .addProvider(new MountainsProvider())
+                .addProvider(new HouseProvider())
+                .addRasterizer(new MKWorldRasterizer())
+                .addRasterizer(new HouseRasterizer())
+                .addPlugins();
     }
 }

@@ -37,17 +37,17 @@ public class MountainsProvider implements ConfigurableFacetProvider {
 
     @Override
     public String getConfigurationName() {
-        return null;
+        return "Mountains";
     }
 
     @Override
     public Component getConfiguration() {
-        return null;
+        return configuration;
     }
 
     @Override
     public void setConfiguration(Component configuration) {
-
+        this.configuration = (MountainsConfiguration)configuration;
     }
 
     private static class MountainsConfiguration implements Component {
@@ -63,13 +63,13 @@ public class MountainsProvider implements ConfigurableFacetProvider {
     @Override
     public void process(GeneratingRegion region) {
         SurfaceHeightFacet facet = region.getRegionFacet(SurfaceHeightFacet.class);
-        float mountainHeight = 400;
+        float mountainHeight = configuration.mountainHeight;
         // loop through every position on our 2d array
         Rect2i processRegion = facet.getWorldRegion();
         for (BaseVector2i position : processRegion.contents()) {
             // scale our max mountain height to noise (between -1 and 1)
             float additiveMountainHeight = mountainNoise.noise(position.x(), position.y()) * mountainHeight;
-            // don't bother subtracting mountain height, that will allow unaffected regions
+            // dont bother subtracting mountain height,  that will allow unaffected regions
             additiveMountainHeight = TeraMath.clamp(additiveMountainHeight, 0, mountainHeight);
 
             facet.setWorld(position, facet.getWorld(position) + additiveMountainHeight);
