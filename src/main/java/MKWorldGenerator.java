@@ -21,7 +21,7 @@ import org.terasology.world.generator.plugin.WorldGeneratorPluginLibrary;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-@RegisterWorldGenerator(id = "tutorialWorld", displayName = "Tutorial World")
+@RegisterWorldGenerator(id = "MK", displayName = "MK World")
 public class MKWorldGenerator extends BaseFacetedWorldGenerator {
 
     @In

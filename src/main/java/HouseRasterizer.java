@@ -28,11 +28,11 @@ import java.util.Map;
  * limitations under the License.
  */
 public class HouseRasterizer implements WorldRasterizer {
-    private Block stone;
+    private Block iron;
 
     @Override
     public void initialize() {
-        stone = CoreRegistry.get(BlockManager.class).getBlock("Core:Stone");
+        iron = CoreRegistry.get(BlockManager.class).getBlock("Core:IronBar");
     }
 
     @Override
@@ -51,7 +51,7 @@ public class HouseRasterizer implements WorldRasterizer {
             for (Vector3i newBlockPosition : walls) {
                 if (chunkRegion.getRegion().encompasses(newBlockPosition)
                         && !inside.encompasses(newBlockPosition)) {
-                    chunk.setBlock(ChunkMath.calcBlockPos(newBlockPosition), stone);
+                    chunk.setBlock(ChunkMath.calcBlockPos(newBlockPosition), iron);
                 }
             }
         }
